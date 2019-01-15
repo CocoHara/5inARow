@@ -1,0 +1,10 @@
+package client;
+
+public class MainGame 
+{
+	public static void main(String[] args) 
+	{
+		
+		GetGame.showGameBoard();
+	}
+}

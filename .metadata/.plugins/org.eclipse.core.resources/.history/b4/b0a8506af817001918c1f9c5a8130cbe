@@ -1,0 +1,23 @@
+package server;
+
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlRootElement(name = "whosturn")
+//Optional
+@XmlType(propOrder = { "turn" })
+
+public class Turns 
+{
+	private int turn = 1;
+
+	public int getTurn() 
+	{
+		return turn;
+	}
+
+	public void setTurn(int turn) 
+	{
+		this.turn = turn;
+	}
+}

@@ -1,0 +1,14 @@
+package client;
+
+import model.Player;
+
+public class CreatePlayer 
+{
+	private Player player1;
+	private Player player2;
+	
+	public static void createPlayer()
+	{
+		
+	}
+}

@@ -1,0 +1,60 @@
+package model;
+
+public class Game 
+{
+	private int row;
+	private int column;
+	private String counter;
+	private boolean player1Turn = false;
+	private boolean player2Turn = false;
+
+	public boolean isPlayer1Turn() 
+	{
+		return player1Turn;
+	}
+
+	public void setPlayer1Turn(boolean player1Turn) 
+	{
+		this.player1Turn = player1Turn;
+	}
+
+	public boolean isPlayer2Turn() 
+	{
+		return player2Turn;
+	}
+
+	public void setPlayer2Turn(boolean player2Turn)
+	{
+		this.player2Turn = player2Turn;
+	}
+
+	public int getRow() 
+	{
+		return row;
+	}
+
+	public void setRow(int row) 
+	{
+		this.row = row;
+	}
+
+	public int getColumn() 
+	{
+		return column;
+	}
+
+	public void setColumn(int column) 
+	{
+		this.column = column;
+	}
+
+	public String getCounter() 
+	{
+		return counter;
+	}
+
+	public void setCounter(String s) 
+	{
+		this.counter = s;
+	}	
+}

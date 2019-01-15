@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="5inARowServer">
+        <property name="context-root" value="5inARowServer"/>
+        <property name="java-output-path" value="/5inARowServer/build/classes"/>
+    </wb-module>
+</project-modules>

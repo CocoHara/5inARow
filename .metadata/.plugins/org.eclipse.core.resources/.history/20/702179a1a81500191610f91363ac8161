@@ -1,0 +1,38 @@
+package server;
+
+public class Players 
+{
+	private String name;
+	private String counter;
+	private boolean myTurn = false;
+	
+	public String getName() 
+	{
+		return name;
+	}
+	
+	public void setName(String name) 
+	{
+		this.name = name;
+	}
+	
+	public String getCounter() 
+	{
+		return counter;
+	}
+	
+	public void setCounter(String counter) 
+	{
+		this.counter = counter;
+	}
+	
+	public boolean isMyTurn() 
+	{
+		return myTurn;
+	}
+	
+	public void setMyTurn(boolean myTurn) 
+	{
+		this.myTurn = myTurn;
+	}	
+}

@@ -1,0 +1,43 @@
+package client;
+
+import java.net.URI;
+
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+
+public class ResetGame 
+{
+	public static void resetGameBoard() 
+	{
+		try
+		{
+			CloseableHttpResponse response = null;
+			
+			try
+			{
+				URI uri = new URIBuilder().setScheme("http")
+						.setHost("localhost")
+						.setPort(8080)
+						.setPath("/5inARowServer/rest/game/reset")
+						.build();
+				
+				HttpGet httpGet = new HttpGet(uri);
+				httpGet.setHeader("Accept", "application/xml");
+				
+				CloseableHttpClient httpClient = HttpClients.createDefault();
+				response = httpClient.execute(httpGet);
+			}
+			finally
+			{
+				response.close();
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+}

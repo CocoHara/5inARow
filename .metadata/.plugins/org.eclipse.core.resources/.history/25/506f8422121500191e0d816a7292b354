@@ -1,0 +1,81 @@
+package client;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.util.List;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+
+import model.Game;
+
+public class GetGame
+{
+	public static void main(String[] args) 
+	{
+		try
+		{
+			CloseableHttpResponse response = null;
+			
+			try
+			{
+				URI uri = new URIBuilder().setScheme("http")
+						.setHost("localhost")
+						.setPort(8080)
+						.setPath("/5inARowServer/rest/game")
+						.build();
+				
+				System.out.println(uri.toString());
+				HttpGet httpGet = new HttpGet(uri);
+				httpGet.setHeader("Accept", "application/xml");
+				
+				CloseableHttpClient httpClient = HttpClients.createDefault();
+				response = httpClient.execute(httpGet);
+				
+				HttpEntity entity = response.getEntity();
+				String text = getASCIIContentFromEntity(entity);
+				System.out.println(text);
+				
+				List<Game> gamePrintOut = new ParseGameBoard().doParseGameBoard(text);
+				
+				for (Game game : gamePrintOut)
+				{
+					System.out.print("Row: " + game.getRow());
+					System.out.print("Column: " + game.getColumn());
+					System.out.print("[" + game.getCounter() + "]");
+				}
+			}
+			finally
+			{
+				response.close();
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	static String getASCIIContentFromEntity (HttpEntity entity) throws IllegalStateException, IOException
+	{
+		InputStream in = entity.getContent();
+		StringBuffer out = new StringBuffer();
+		int n = 1;
+		
+		while (n > 0)
+		{
+			byte[] b = new byte[4096];
+			n = in.read(b);
+			
+			if (n > 0)
+				out.append(new String(b, 0, n));
+		}
+		
+		return out.toString();
+	}
+}

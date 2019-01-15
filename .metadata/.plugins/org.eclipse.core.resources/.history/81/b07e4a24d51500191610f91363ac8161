@@ -1,0 +1,34 @@
+package client;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Scanner;
+
+import org.apache.http.HttpEntity;
+
+import model.Player;
+
+public class MainGame 
+{
+	static Player player1;
+	static Player player2;
+	
+	public static void main(String[] args) 
+	{
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.print("Player 1 enter your name: ");
+		player1.setpName(scanner.nextLine());
+		player1.setCounter("X");
+		
+		System.out.print("Player 2 enter your name: ");
+		player2.setpName(scanner.nextLine());
+		player2.setCounter("O");
+		
+		GetGame.showGameBoard();
+		
+		
+	}
+	
+	
+}

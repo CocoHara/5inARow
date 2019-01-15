@@ -1,0 +1,69 @@
+package client;
+
+import java.util.Scanner;
+
+import model.Player;
+
+public class MainGame 
+{
+	static Player player1;
+	static Player player2;
+	
+	public static void main(String[] args) 
+	{
+		String columnChosen = null;
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.print("Player 1 enter your name: ");
+		player1.setpName(scanner.nextLine());
+		player1.setCounter("X");
+		player1.setMyTurn(true);
+		
+		System.out.print("Player 2 enter your name: ");
+		player2.setpName(scanner.nextLine());
+		player2.setCounter("O");
+		player2.setMyTurn(false);
+		
+		while(columnChosen.equals("end"))
+		{
+			GetGame.showGameBoard();
+			
+			if (player1.isMyTurn())
+			{
+				System.out.print(player1.getpName() + "its your turn, choose a column(0-7): ");
+				columnChosen = scanner.nextLine();
+				
+				try 
+				{
+					PostTurn.postTurn(columnChosen, player1.getCounter());
+					player1.setMyTurn(false);
+					player2.setMyTurn(true);
+				} 
+				catch (Exception e) 
+				{
+					e.printStackTrace();
+					break;
+				}
+			}
+			else
+			{
+				System.out.print(player2.getpName() + "its your turn, choose a column(0-7): ");
+				columnChosen = scanner.nextLine();
+				
+				try 
+				{
+					PostTurn.postTurn(columnChosen, player2.getCounter());
+					player2.setMyTurn(false);
+					player1.setMyTurn(true);
+				} 
+				catch (Exception e) 
+				{
+					e.printStackTrace();
+					break;
+				}
+			}
+		}
+	}
+	
+	
+}

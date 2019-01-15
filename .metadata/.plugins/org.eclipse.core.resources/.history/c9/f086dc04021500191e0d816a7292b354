@@ -1,0 +1,45 @@
+package server;
+
+public class Game 
+{
+	private int row;
+	private int column;
+	private char counter;
+	
+	public Game(int row, int column, char counter) 
+	{
+		this.row = row;
+		this.column = column;
+		this.counter = counter;
+	}
+
+	public int getRow() 
+	{
+		return row;
+	}
+
+	public void setRow(int row) 
+	{
+		this.row = row;
+	}
+
+	public int getColumn() 
+	{
+		return column;
+	}
+
+	public void setColumn(int column) 
+	{
+		this.column = column;
+	}
+
+	public char getPlayer1() 
+	{
+		return counter;
+	}
+
+	public void setPlayer1(char counter) 
+	{
+		this.counter = counter;
+	}	
+}

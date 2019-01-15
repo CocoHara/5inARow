@@ -1,0 +1,19 @@
+package server;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class Winner 
+{
+	private String winner;
+
+	public String getWinner() 
+	{
+		return winner;
+	}
+
+	public void setWinner(String winner) 
+	{
+		this.winner = winner;
+	}
+}

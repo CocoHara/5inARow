@@ -1,0 +1,9 @@
+package server;
+
+public class Players 
+{
+	private String name;
+	private String counter;
+	private boolean myTurn = false;
+	
+}

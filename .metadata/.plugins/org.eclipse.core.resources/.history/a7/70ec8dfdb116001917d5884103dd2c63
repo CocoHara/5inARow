@@ -1,0 +1,86 @@
+package server;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public enum GameDAO 
+{
+	instance;
+	
+	private Map<Integer, Game> gameMap = new HashMap<Integer, Game>();
+	private Turns whichPlayersTurn;
+	
+	private GameDAO()
+	{
+		int id = 1;
+		
+		for (int row=0; row<6; row++)
+		{
+			for (int col=0; col<9; col++)
+			{			
+				Game rowcol = new Game();
+				rowcol.setRow(row);
+				rowcol.setColumn(col);
+				rowcol.setCounter(" ");
+				
+				gameMap.put(id, rowcol);
+				id++;
+			}
+		}
+	}
+	
+	public List<Game> getGame()
+	{
+		List<Game> game = new ArrayList<Game>();
+		game.addAll(gameMap.values());
+		return game;
+	}
+	
+	public void editGameBoard(int column, String counter)
+	{
+		int id = 1;
+		int previousId = 0;
+		
+		for (Game insertCounter : gameMap.values()) 
+		{		
+			if (insertCounter.getColumn() == column)
+			{	
+				if (!" ".equals(insertCounter.getCounter()))
+				{
+					previousId = id - 9;
+					insertCounter.setCounter(counter);
+					gameMap.replace(previousId, insertCounter);
+				}
+				if (insertCounter.getRow() == 5 && " ".equals(insertCounter.getCounter()))
+				{
+					insertCounter.setCounter(counter);
+					gameMap.replace(id, insertCounter);
+				}/*
+				if (" ".equals(insertCounter.getCounter()))
+				{
+					previousId = id;
+				}*/
+				insertCounter.setCounter(" ");
+			}
+			id++;
+		}
+		/*
+		if (counter.equals("X"))
+		{
+			whichPlayersTurn.setTurn(1);
+		}
+		else
+		{
+			whichPlayersTurn.setTurn(2);
+		}*/
+	}
+	
+	public List<Turns> getWhosTurn()
+	{
+		List<Turns> whosTurn = new ArrayList<Turns>(1);
+		whosTurn.add(0, whichPlayersTurn);
+		return whosTurn;		
+	}
+}

@@ -1,0 +1,16 @@
+package client;
+
+import model.Player;
+
+public class MainGame 
+{
+	Player player1;
+	Player player2;
+	
+	public static void main(String[] args) 
+	{
+		CreatePlayer.createPlayer();
+		
+		GetGame.showGameBoard();
+	}
+}
